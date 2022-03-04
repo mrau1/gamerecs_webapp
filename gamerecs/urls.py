@@ -18,6 +18,7 @@ from django.urls import path, include
 from . import views
 
 from accounts.views import(
+    algorithm_view,
     register_view,
     login_view,
     logout_view
@@ -27,6 +28,7 @@ from recommender.views import (
 )
 
 urlpatterns = [
+    path('algorithm-view/', algorithm_view)
     path('admin/', admin.site.urls),
 
     path('', views.home, name="front-page"),  # path for home page
