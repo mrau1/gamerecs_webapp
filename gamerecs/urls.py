@@ -18,17 +18,17 @@ from django.urls import path, include
 from . import views
 
 from accounts.views import(
-    algorithm_view,
     register_view,
     login_view,
     logout_view
 )
 from recommender.views import (
-    add_entry
+    add_entry,
+    newInput
 )
 
 urlpatterns = [
-    path('algorithm-view/', algorithm_view)
+    path('input-view/', newInput)
     path('admin/', admin.site.urls),
 
     path('', views.home, name="front-page"),  # path for home page
