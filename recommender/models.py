@@ -14,3 +14,8 @@ class Entry(models.Model):
     game_modes = models.CharField(max_length=20)
     tags = models.CharField(max_length=20)
     platforms = models.CharField(max_length=20)
+
+class input(models.Model):
+    entry = models.CharField(max_length=500)
+    def __str__(self):
+        return f"(self.entry)"
