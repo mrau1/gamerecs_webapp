@@ -25,12 +25,13 @@ from accounts.views import(
 from recommender.views import (
     add_entry,
     newInput
+
 )
 
 urlpatterns = [
-    path('input-view/', newInput)
+    
     path('admin/', admin.site.urls),
-
+    path('input-view/', newInput, name="input-view"),
     path('', views.home, name="front-page"),  # path for home page
     # sends urls with user prefix to user file
 

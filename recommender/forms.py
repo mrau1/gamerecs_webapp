@@ -1,6 +1,7 @@
 from django import forms
-
 from .models import Entry
+from django.forms import ModelForm
+from .models import input
 
 
 class EntryForm(forms.ModelForm):
@@ -26,3 +27,8 @@ class EntryForm(forms.ModelForm):
             'platforms'
         ]
 
+
+class InputForm(ModelForm):
+    class Meta:
+        model = input
+        fields = '__all__'

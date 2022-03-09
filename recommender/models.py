@@ -18,4 +18,4 @@ class Entry(models.Model):
 class input(models.Model):
     entry = models.CharField(max_length=500)
     def __str__(self):
-        return t"(self.entry)"
+        return f"(self.entry)"
