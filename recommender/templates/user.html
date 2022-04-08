@@ -79,7 +79,7 @@
 </style>
 <h1>Your Recommendations</h1>
     {% for r in recs %}
-    <div class="dropdown">
+    <div class="dropdown" id="user-recs">
         <button class="dropbtn">Game: {{ r.games }}</em> -- (entered on {{r.timestamp}})
             <i class="fa fa-caret-down"></i>
           </button>

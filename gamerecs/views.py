@@ -9,3 +9,6 @@ def home(request):
 
 def ms6(request):
     return render(request, 'ms6.html')
+
+def register_request(request):
+    return render(request, 'register.html')
