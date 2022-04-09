@@ -3,28 +3,45 @@
 {% block content %}
 {% include "projinfo.html" %}
 <style>
-  #user-recs3 {
-      border: 5px solid black;
-      text-align: left;
-      color: white;
-      background-color: #306665;
+  #user-recs3{
+      background-color: #f5fbff;
       max-width: 100%;
+      padding: 20px;
+      margin: 10px;
+      border-radius: 30px;
+      color: #255250;
+    }
+    #user-recs4{
+      background-color: #f5fbff;
+      max-width: 100%;
+      padding: 20px;
+      margin: 0px;
+      border-radius: 30px;
+      color: black;
+    }
+    #Links{
+      background-color: #255250;
+      max-width: 30%;
+      padding: 20px;
       margin: 30px;
+      border-radius: 3px;
+      color: white;
+      border: 3px solid #377975;
     }
 </style>
   
 <div id="user-recs3" style="padding: 20px;">
   <h3 class="title">About the project</h3>
+  <div id="user-recs4">
   <p>Authors: Rena Repenning, Kelly Romer, Emily O'Connell, Matt Rau, and Vaughn Bangash.</p>
-  <p>Faculty mentor: Dr Anastasia Kurdia</p>
+  <p>Faculty Mentor: Dr. Anastasia Kurdia</p>
   <p>Website built using Django, Heroku, and Bootstrap. Data scraped from IGDB, Reddit, and Wikipedia.</p>
   <p>Our algorithm is currently a simple KNN model; we plan to employ training data to improve accuracy in April. We are currently working with a limited dataset and would appreciate any feedback you can provide.</p>
-
+</div>
 
   <h3 class="title">Access our code</h3>
-  <a class="nav-link" href="https://github.com/renarepenning/VideoGameRecommender">Algorithm Code Repo</a>
-  <a class="nav-link" href="https://github.com/renarepenning/gamerecs_webapp">Web App Repo</a>
-
+  <a style="display: inline-block;" id="Links" class="nav-link" href="https://github.com/renarepenning/VideoGameRecommender">Algorithm Code Repo </a>
+  <a style="display: inline-block;" id="Links" class="nav-link" href="https://github.com/renarepenning/gamerecs_webapp">Web App Repo</a>
 </div>
 {% endblock %}
 

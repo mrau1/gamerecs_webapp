@@ -10,14 +10,30 @@
     * {
       box-sizing: border-box;
     }
-    #user-recs2 {
+    #Padding-Box {
+      background-color: #f5fbff;
+      max-width: 30%;
       padding: 10px;
-      border: 3px solid black;
-      text-align: left;
-      color: white;
-      background-color: #71b6d9;
-      max-width: 50%;
-      margin: 30px;
+      margin: 10px;
+      border-radius: 10px;
+      border: 2px solid black;
+      
+    }
+    #Entry-Box {
+      background-color: #f5fbff;
+      max-width: 70%;
+      padding: 10px;
+      margin: 10px;
+      border-radius: 10px;
+      
+    }
+    #Submit-Button {
+      background-color: #f5fbff;
+      max-width: 70%;
+      padding: 3px;
+      margin: 0px;
+      border-radius: 3px;
+      
     }
 
     body {
@@ -83,10 +99,10 @@
 <!-- https://www.youtube.com/watch?v=ATuS7vpVc0I-->
 <h3 class="title">{{ title }}</h3>
 
-<form method='POST' action="." id="user-recs2" autocomplete="off"><div class="autocomplete" style="width:300px;">{% csrf_token %}
+<form method='POST' action="." id="Padding-Box" autocomplete="off"><div class="autocomplete" style="width:300px;">{% csrf_token %}
     
-    <input id="myInput" type="text" name="games" placeholder="Enter Game">
-    <button type="submit">Submit</button>
+    <input id="Entry-Box" type="text" name="games" placeholder="Enter Game">
+    <button id="Submit-Button" type="submit">Submit</button>
   </div>
 </form>
 

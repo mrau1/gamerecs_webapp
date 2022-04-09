@@ -1,100 +1,129 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--Source: https://www.w3schools.com/howto/howto_js_dropdown.asp -->
 <style>
     #user-out {
-      background-color: whitesmoke;
+      background-color: #f5fbff;
       max-width: 50%;
-      margin: 30px;
+      padding: 20px;
+      margin: 20px;
+      border-radius: 30px;
+      
     }
-    #user-recs {
-      border: 5px solid black;
-      text-align: center;
-      color: white;
-      background-color: #306665;
+    #user-out2 {
+      background-color: #f5fbff;
       max-width: 50%;
-      margin: 30px;
+      padding: 20px;
+      margin: 20px;
+      border-radius: 30px;
+      position: absolute;
+      display: inline;
     }
-    #dropdown-content {
+    .dropbtn {
+      background-color: #f5fbff;
+      color: black;
+      padding: 10px;
+      font-size: 16px;
+      border: black;
+      cursor: pointer;
+    }
+    
+    .dropbtn:hover, .dropbtn:focus {
+      background-color: #181a1b54;;
+      border-radius: 30px;
+    }
+    
+    .dropdown {
+      float: left;
+      position: relative;
+      display: inline-block;
+      border-radius: 30px;
+    }
+    
+    .dropdown-content {
       display: none;
       position: absolute;
-     background-color: #f9f9f9;
-      min-width: 160px;
+      top: 0;
+      left: 630px;
+      background-color: #f5fbff;
+      border-radius: 60px;
+      min-width: 100%;
+      overflow: auto;
       box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      right: 0;
       z-index: 1;
     }
-    #dropdown {
-  float: left;
-  overflow: hidden;
-}
+    
+    .dropdown-content a {
+      color: black;
+      padding: 0px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    #title {
+    font-weight: bolder;
+    font-size: 14;
+    color: #255250;
+    }
 
-#dropdown #dropbtn {
-  font-size: 16px;  
-  border: none;
-  outline: none;
-  color: white;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
-}
-.dropbtn {
-  background-color: #04AA6D;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-}
+    #time {
+      text-align: center;
+    }
 
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
+    #rating {
+      color: #4f8b8a;;
+      text-align: center;
+      font-size: large;
+      font-weight: bold;
+    }
+    
+    .dropdown a:hover {background-color: #ddd;}
+    
+    .show {display: block;}
+    </style>
+    </head>
+    <body>
+    
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-content a:hover {background-color: #ddd;}
-
-.dropdown:hover .dropdown-content {display: block;}
-
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
-
-
-
-</style>
 <h1>Your Recommendations</h1>
     {% for r in recs %}
-    <div class="dropdown" id="user-recs">
-        <button class="dropbtn">Game: {{ r.games }}</em> -- (entered on {{r.timestamp}})
-            <i class="fa fa-caret-down"></i>
-          </button>
-        <!--<button onclick="myFunction()" class="dropbtn">Game: {{ r.games }}</em> -- (entered on {{r.timestamp}})</button>-->
-        <div class="dropdown-content">
-            <a href="#">{{r.rec|linebreaksbr  }}</a>
+    <div id="user-out" class="dropdown">
+        <button id="title" onclick="myFunction()" class="dropbtn">Game: {{ r.games }}</em> -- (entered on {{r.timestamp}})</button>
+        <div id="myDropdown" class="dropdown-content">
+            <a id="rating" href="#">{{r.rec|linebreaksbr  }}</a>
         </div>
     </div>
     {% endfor %}
-
-    <br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <script>
+    /* When the user clicks on the button, 
+    toggle between hiding and showing the dropdown content */
+    function myFunction() {
+      document.getElementById("myDropdown").classList.toggle("show");
+    }
+    
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+      if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+    </script>
     <h1>Your Preference Profiles</h1>
     {% for e in entries %}
-    <div id="user-out">
+    <div id="user-out2">
         <p>{{ e.age }}, {{ e.genre }}, {{ e.keyword }}, {{ e.theme }}, {{ e.game_modes}}, {{ e.tags }}, {{ e.platforms }} </p>
     </div>
     {% endfor %}
 {% endblock %}
+
+</meta>

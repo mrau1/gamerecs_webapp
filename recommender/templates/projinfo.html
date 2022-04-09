@@ -1,19 +1,30 @@
 <style>
-  #user-recs {
-      border: 5px solid black;
-      text-align: center;
-      color: white;
-      background-color: #306665;
+  #Proj-Info-Title {
+      background-color: #f5fbff;
       max-width: 70%;
-      margin: 30px;
+      padding: 20px;
+      margin: 10px;
+      border-radius: 30px;
+      
     }
-    #user-recs2 {
-      border: 5px solid black;
-      text-align: left;
-      color: black;
-      background-color: #white;
-      max-width: 90%;
-      margin: 30px;
+
+    #user-out2 {
+      background-color: #f5fbff;
+      max-width: 50%;
+      padding: 20px;
+      margin: 20px;
+      border-radius: 30px;
+      position: absolute;
+      display: inline;
+    }
+
+    #Milestones {
+      background-color: #f5fbff;
+      max-width: 100%;
+      padding: 20px;
+      margin: 10px;
+      border-radius: 30px;
+      color: #255250;
     }
 
 </style>
@@ -21,12 +32,13 @@
 <div class="media" id="projinfo" style="padding: 10px;">
     <img src="https://upload.wikimedia.org/wikipedia/en/7/7e/Tulane_logo.svg" class="mr-3" alt="Tulane logo">
     
-    <div class="media-body" id="user-recs" style="padding: 20px;">
-      <h5 class="title">Capstone Project Goal</h5>
+    <div class="media-body" id="Proj-Info-Title" style="padding: 20px;">
+      <h5 style="color: #255250;" class="title">Capstone Project Goal</h5>
+
       Recommendation systems are a popular and profitable application of machine learning across many forms of media.  There are no available, user-centric recommendation algorithms that draw data from multiple sources. By creating a video game recommendation system we hope to help users discover games they would not have otherwise. Modern recommenders rely on corporate advertising motivations or private user data. The creation and obtainment of video games require more time and financial investment than other media such as film, music, etc. Twitch’s Internet Games Database is a comprehensive dataset and API, similar in function to the IMDB. We aim to use this data to leverage user opinions on popular games to recommend indie games.
     </div>
 </div>
-    <div class="container" id="user-recs2">
+    <div class="container" id="Milestones">
       <h2>Milestone Timeline</h2>
       <table class="table table-striped">
         <thead>
@@ -54,23 +66,23 @@
           </tr>
           <tr>
             <td>MS 5</td>
-            <td>Dooley</td>
-            <td>December 15, 2021</td>
+            <td>At this time we have developed a running algorithm MVP as well as drafted a homepage through JavaScript. We worked in parallel to continue data collection alongside app development. Throughout the milestone, Rena worked to recreate the site through Django, working with Emily to launch it on Heroku. The Django site features Game and User classes and has SQLite integrated. We were able to access the IGDB data through the API to get a massive dataset spanning across 200,000 games. We plan to get more user generated data before implementing user input within the site.</td>
+            <td>February 6, 2022</td>
           </tr>
           <tr>
             <td>MS 6</td>
-            <td>Dooley</td>
-            <td>December 15, 2021</td>
+            <td>For this Milestone we were tasked with presenting the current standings of our project. We decided to do a small presentation before demonstrating our current implementation before the class. Our main focus was to finally connect the algorithm to the site and we were able to successfully showcase both the Django site and the algorithm. With the algorithm now working through the site, our next step was to optimize both, refining the website to make it look more professional while training the algorithm to improve its accuracy.</td>
+            <td>March 14, 2022</td>
           </tr>
           <tr>
             <td>MS 7</td>
-            <td>Dooley</td>
-            <td>December 15, 2021</td>
+            <td>For this Milestone we created a poster to be used as a representation of our project. The link to the digital version can be found on the About page. Kelly took charge of this Milestone, working soleley to create the poster as she had already completed her tasks and was looking to further help the group.</td>
+            <td>April 11, 2022</td>
           </tr>
           <tr>
             <td>MS 8</td>
-            <td>Dooley</td>
-            <td>December 15, 2021</td>
+            <td>Final</td>
+            <td>May 3, 2022</td>
           </tr>
         </tbody>
       </table>
