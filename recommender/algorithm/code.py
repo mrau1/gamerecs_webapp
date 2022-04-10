@@ -19,6 +19,7 @@ test = df.iloc[5]
 master_cols = ['genres', 'themes', 'game_modes', 'tags', 'platforms', 'keywords']
 
 
+
 def conjunction(lst1, lst2):
     return list(set(lst1) & set(lst2))
 
@@ -57,11 +58,12 @@ def transform_column(target, column, df=df):
 def get_input(game):
     try:
         return df[df['name'] == game].iloc[0]
+
     except:
         print('FUCK YOU')
 
 
-def transform(test, columns=master_cols, df=df):
+def transform( test, columns=master_cols, df=df):
     df = df.set_index("name")
     df['name'] = df.index
 
@@ -80,27 +82,35 @@ def transform(test, columns=master_cols, df=df):
             master = master.join(ser)
             out_cols.append(col)
         except:
-            # print("FUCK YOU", col)
+            #print("FUCK YOU", col)
             pass
-    print(test.loc['name'], out_cols)
+    weights = np.random.dirichlet(np.ones(len(columns)), size=1)[0]
+
+    weight_dict = {}
+    for index, weight in enumerate(weights):
+        weight_dict[columns[index]] = weight
+        try:
+            master[columns[index]] = master[columns[index]] * weight
+        except:
+            pass
+
     master = master[out_cols]
+    master.to_csv("C:/Users/Matthew Raw/Downloads/ALGO TEST.csv")
     master['Total'] = master.sum(axis=1)
     end = time.time() - start
     print('Transform Time', end)
     master = master.drop(test.loc['name'])
-    return master.sort_values('Total')
+    return master.sort_values('Total'), weight_dict
 
 
-def get_game(game: str or list, num=6):
+def get_game(game:str or list, num=10):
     if type(game) == str:
         test = get_input(game)
-        df = transform(test)
-        return df.sort_values('Total', ascending=False).head(num).index.tolist()
+        df, weights = transform(test)
+        return df.sort_values('Total', ascending=False).head(num).index.tolist(), weights
     else:
-        df = multiple_games(game)
-        return df.head(num).index.tolist()
-
-
+        df, weights = multiple_games(game)
+        return df.head(num).index.tolist(), weights
 def save_file(game, columns: list, df: pd.DataFrame = df):
     if not os.path.exists("Saver"):
         os.mkdir('Saver')
@@ -117,7 +127,7 @@ def save_file(game, columns: list, df: pd.DataFrame = df):
 
 def multiple_games(games: list, df=df,
                    columns: list = ['genres', 'themes', 'game_modes', 'tags', 'platforms', 'keywords'],
-                   num=6):
+                   num=10):
     # print(df.name.tolist())
     SAVE_DIR = 'Saver'
     """if os.path.exists(SAVE_DIR):
@@ -143,12 +153,10 @@ def multiple_games(games: list, df=df,
         thread.join()
 
     for game in games:
-        pdf = pd.DataFrame(pd.read_csv(f'Saver/{game}.csv', index_col=0)['Total'])
+        pdf = pd.DataFrame(pd.read_csv(f'Saver/{game}.csv',index_col=0)['Total'])
         pdf[game] = pdf['Total']
-
         master = master.join(pdf[[game]])
 
-        print(master.columns, 'kjljlkhk')
     master['Total'] = master.sum(axis=1)
     return master[['Total']].sort_values('Total', ascending=False)
 
@@ -174,6 +182,7 @@ def preprocess(df: pd.DataFrame, columns=master_cols):
     end = time.time() - start
     print('Start to Finish', end, 'Seconds')
     print('Average Time per sample', end / len(df), 'Seconds')
+
 
 # Pandas DataFrame of IGDB games
 def build_ul(df=df):
